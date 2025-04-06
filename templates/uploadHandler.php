@@ -32,10 +32,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['document'])) {
         echo "File uploaded successfully!";
 
         // Save upload info to DB
-        $stmt = $conn->prepare("INSERT INTO uploads (user_id, filename, uploaded_at) VALUES (:user_id, :filename, NOW())");
+        $stmt = $conn->prepare("INSERT INTO uploads (user_id, file_name, uploaded_at, file_path) VALUES (:user_id, :filename, NOW(), :filepath)");
         $stmt->execute([
             ':user_id' => $_SESSION['user_id'],
-            ':filename' => $filename
+            ':filename' => $filename,
+            ':filepath' => $targetFile
         ]);
     } else {
         echo "Error uploading file.";

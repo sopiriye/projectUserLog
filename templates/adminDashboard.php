@@ -16,7 +16,7 @@ if (time() - $_SESSION['last_activity'] > 900) {
 }
 
 // Fetch uploaded files
-$stmt = $conn->prepare("SELECT u.username, f.filename, f.uploaded_at FROM uploads f JOIN users u ON f.user_id = u.user_id ORDER BY f.uploaded_at DESC");
+$stmt = $conn->prepare("SELECT u.username, f.file_name, f.uploaded_at FROM uploads f JOIN users u ON f.user_id = u.user_id ORDER BY f.uploaded_at DESC");
 $stmt->execute();
 $uploads = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -41,14 +41,14 @@ $uploads = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </thead>
 
     <?php foreach ($uploads as $file): 
-        $filePath = 'uploads/' . $file['filename'];
+        $filePath = 'uploads/' . $file['file_name'];
         $fileSize = file_exists($filePath) ? round(filesize($filePath) / 1024, 2) : 'N/A';
     ?>
 
     <tbody>
       <tr>
         <td><?php echo htmlspecialchars($file['username']); ?></td>
-        <td><?php echo htmlspecialchars($file['filename']); ?></td>
+        <td><?php echo htmlspecialchars($file['file_name']); ?></td>
         <td><?php echo $fileSize; ?></td>
         <td><?php echo htmlspecialchars($file['uploaded_at']); ?></td>
         <td><a href="<?php echo $filePath; ?>" download>Download</a></td>
