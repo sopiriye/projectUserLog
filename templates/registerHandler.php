@@ -41,6 +41,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         ':role' => $role
     ]);
 
-    echo "Registration successful!";
+    header("Location: /projectUserLog/login.php"); // Redirect to login page
 }
 ?>
