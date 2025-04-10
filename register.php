@@ -1,5 +1,6 @@
-<!-- register.php - User registration form -->
+<!-- User registration form -->
 <?php include 'templates/includes/header.php'; ?>
+
 <div class="container py-5">
   <h2 class="text-center mb-4">Register</h2>
   <form method="POST" action="templates/registerHandler.php">
@@ -17,5 +18,8 @@
     </div>
     <button type="submit" class="btn btn-primary">Register</button>
   </form>
+
+  <a href="resendVerification.php">Resend Verification Email</a> | <a href="resetPasswordRequest.php">Forgot Password?</a>
 </div>
+
 <?php include 'templates/includes/footer.php'; ?>

@@ -1,0 +1,15 @@
+<?php
+
+require_once 'config/config.php';
+
+$token = $_GET['token'] ?? '';
+
+if ($token) {
+    $stmt = $conn->prepare("UPDATE users SET is_verified = 1, verification_token = NULL WHERE verification_token = :token");
+    $stmt->execute([':token' => $token]);
+
+    echo $stmt->rowCount() > 0 ? "Email verified successfully. You can now log in." : "Invalid or expired verification link.";
+} else {
+    echo "No token provided.";
+}
+?>
