@@ -50,9 +50,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     ]);
 
     
+    $template = file_get_contents(__DIR__ . '/includes/emailVerificationTemplate.html');
+
     $verifyLink = "http://localhost:4000/projectUserLog/templates/verifyEmail.php?token=$verification_token";
     $subject = "Verify your email";
-    $message = "Click the link to verify your email: $verifyLink";
+
+    $message = str_replace('https://yourdomain.com/', $verifyLink, $template);
+    // $message = "Click the link to verify your email: $verifyLink";
 
     sendEmail($email, $subject, $message);
 

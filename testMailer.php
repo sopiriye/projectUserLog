@@ -20,12 +20,19 @@ try {
     $mail->SMTPSecure = 'ssl';                    // TLS encryption
     $mail->Port = 465;                            // Gmail SMTP port for TLS
 
+
+    $template = file_get_contents(__DIR__ . '/templates/includes/emailVerificationTemplateTest.html');
+
+    $verificationLink = "http://yourdomain.com/verify.php?token=$token";
+    $body = str_replace('{{verification_link}}', $verificationLink, $template);
+
     // Email settings
     $mail->setFrom('sopiriyerobinson2003@gmail.com', 'Mailer Test'); // Sender
     $mail->addAddress('sopiriyerobinson@gmail.com');            // 🔁 Replace with your own/test email
     $mail->isHTML(true);
     $mail->Subject = 'PHPMailer Test ✅';
-    $mail->Body    = '<h2>This is a PHPMailer test message</h2><p>If you received this, it works!</p>';
+    $mail->Body    = $body;
+    // $mail->Body    = '<h2>This is a PHPMailer test message</h2><p>If you received this, it works!</p>';
 
     $mail->send();
     echo 'Test email sent successfully!';
