@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
     $verification_token = bin2hex(random_bytes(16));
 
-    $stmt = $conn->prepare("INSERT INTO users (username, email, password, role) VALUES (:username, :email, :password, :role)");
+    $stmt = $conn->prepare("INSERT INTO users (username, email, password, role, verification_token) VALUES (:username, :email, :password, :role, :token)");
     $stmt->execute([
         ':username' => $username,
         ':email' => $email,

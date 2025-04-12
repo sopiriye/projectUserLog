@@ -4,9 +4,13 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require_once __DIR__ . '/../PHPMailer/src/Exception.php';
-require_once __DIR__ . '/../PHPMailer/src/PHPMailer.php';
-require_once __DIR__ . '/../PHPMailer/src/SMTP.php';
+require_once __DIR__ . '/../../vendor/phpMailer/phpMailer/src/Exception.php';
+require_once __DIR__ . '/../../vendor/phpMailer/phpMailer/src/PHPMailer.php';
+require_once __DIR__ . '/../../vendor/phpMailer/phpMailer/src/SMTP.php';
+// require_once __DIR__ . '/../PHPMailer/src/SMTP.php';
+
+// alternative for move up a directory folder
+// require_once dirname(__DIR__, 3) . '/PHPMailer/src/Exception.php';
 
 function sendEmail($to, $subject, $body) {
     $mail = new PHPMailer(true);
@@ -16,13 +20,13 @@ function sendEmail($to, $subject, $body) {
         $mail->isSMTP();
         $mail->Host       = 'smtp.gmail.com';  // Use your SMTP server
         $mail->SMTPAuth   = true;
-        $mail->Username   = 'your-email@gmail.com';  // Replace with your email
-        $mail->Password   = 'your-app-password';     // Replace with your app password
+        $mail->Username   = 'sopiriyerobinson2003@gmail.com';  // Replace with your email
+        $mail->Password   = 'rswnrgexfywmnpuw';     // Replace with your app password
         $mail->SMTPSecure = 'tls';
         $mail->Port       = 587;
 
         // Email headers
-        $mail->setFrom('your-email@gmail.com', 'projectUserLog');
+        $mail->setFrom('sopiriyerobinson2003@gmail.com', 'projectUserLog');
         $mail->addAddress($to);
         $mail->isHTML(true);
 
