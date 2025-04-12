@@ -22,8 +22,8 @@ function sendEmail($to, $subject, $body) {
         $mail->SMTPAuth   = true;
         $mail->Username   = 'sopiriyerobinson2003@gmail.com';  // Replace with your email
         $mail->Password   = 'rswnrgexfywmnpuw';     // Replace with your app password
-        $mail->SMTPSecure = 'tls';
-        $mail->Port       = 587;
+        $mail->SMTPSecure = 'ssl';
+        $mail->Port       = 465;
 
         // Email headers
         $mail->setFrom('sopiriyerobinson2003@gmail.com', 'projectUserLog');
@@ -36,7 +36,8 @@ function sendEmail($to, $subject, $body) {
         $mail->send();
         return true;
     } catch (Exception $e) {
-        error_log("Mailer Error: " . $mail->ErrorInfo);
+        echo "Mailer Error: " . $mail->ErrorInfo;
+        // error_log("Mailer Error: " . $mail->ErrorInfo);
         return false;
     }
 }

@@ -49,8 +49,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         ':token' => $verification_token
     ]);
 
-
-    $verifyLink = "http://localhost:4000//projectUserLog/verifyEmail.php?token=$verification_token";
+    
+    $verifyLink = "http://localhost:4000/projectUserLog/templates/verifyEmail.php?token=$verification_token";
     $subject = "Verify your email";
     $message = "Click the link to verify your email: $verifyLink";
 

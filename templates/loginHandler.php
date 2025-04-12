@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     if ($user && password_verify($password, $user['password'])) {
 
-        if (!$user['is_verified']) {
+        if (!$user['email_verified']) {
             echo "Please verify your email before logging in.";
             exit;
         }
