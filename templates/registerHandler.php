@@ -56,11 +56,22 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $subject = "Verify your email";
 
     $message = str_replace('https://yourdomain.com/', $verifyLink, $template);
-    // $message = "Click the link to verify your email: $verifyLink";
+   
+    // chec
+    if (sendEmail($email, $subject, $message)) {
+    echo "Registration successful. Check your email to verify.";
+    } else {
 
-    sendEmail($email, $subject, $message);
+    $stmt = $conn->prepare("DELETE FROM users WHERE email = :email");
+    $stmt->execute([
+        ':email' => $email
+        
+    ]);
 
-    echo "Registration successful! Please check your email to verify your account.";
+    echo "Registration failed. Could not send verification email.";
+    }
+
+    // echo "Registration successful! Please check your email to verify your account.";
     // header("Location: /projectUserLog/login.php"); // Redirect to login page
 }
 ?>

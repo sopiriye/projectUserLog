@@ -1,28 +1,32 @@
-<?php
-// resend_verification.php
-require 'config/config.php';
-require 'config/mailer.php';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Resend Verification</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $email = trim($_POST['email']);
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow">
+        <div class="card-header text-center bg-primary text-white">
+          <h4>Resend Verification Email</h4>
+        </div>
+        <div class="card-body">
+          <form method="POST" action="resendVerificationHandler.php">
+            <div class="mb-3">
+              <label for="email" class="form-label">Email Address</label>
+              <input type="email" class="form-control" id="email" name="email" placeholder="Enter your registered email" required>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Resend Verification</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-    $stmt = $conn->prepare("SELECT verification_token, is_verified FROM users WHERE email = :email");
-    $stmt->execute([':email' => $email]);
-    $user = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    if ($user && !$user['is_verified']) {
-        $verifyLink = "http://localhost/projectUserLog/verify_email.php?token=" . $user['verification_token'];
-        $subject = "Resend Email Verification";
-        $message = "Click the link to verify your email: $verifyLink";
-        sendEmail($email, $subject, $message);
-        echo "Verification email sent.";
-    } else {
-        echo "Email is either verified already or doesn't exist.";
-    }
-}
-?>
-
-<form method="POST">
-    <input type="email" name="email" placeholder="Enter your email" required><br>
-    <button type="submit">Resend Verification</button>
-</form>
+</body>
+</html>

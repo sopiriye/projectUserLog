@@ -18,7 +18,7 @@
     <button type="submit" class="btn btn-success">Login</button>
   </form>
 
-  <a href="reset_password_request.php">Forgot Password?</a>
+  <a href="templates/resetPasswordRequest.php">Forgot Password?</a>
 </div>
 
 <?php include 'templates/includes/footer.php'; ?>

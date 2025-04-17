@@ -19,7 +19,7 @@
     <button type="submit" class="btn btn-primary">Register</button>
   </form>
 
-  <a href="resendVerification.php">Resend Verification Email</a> | <a href="resetPasswordRequest.php">Forgot Password?</a>
+  <a href="templates/resendVerification.php">Resend Verification Email</a> | <a href="templates/resetPasswordRequest.php">Forgot Password?</a>
 </div>
 
 <?php include 'templates/includes/footer.php'; ?>

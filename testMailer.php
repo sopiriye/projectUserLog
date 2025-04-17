@@ -23,7 +23,7 @@ try {
 
     $template = file_get_contents(__DIR__ . '/templates/includes/emailVerificationTemplateTest.html');
 
-    $verificationLink = "http://yourdomain.com/verify.php?token=$token";
+    $verificationLink = "http://yourdomain.com/verify.php?token=";
     $body = str_replace('{{verification_link}}', $verificationLink, $template);
 
     // Email settings

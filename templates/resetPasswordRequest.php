@@ -1,25 +1,41 @@
-<?php
-// reset_password_request.php
-require 'config/config.php';
-require 'config/mailer.php';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Password Reset Request</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .reset-container {
+      max-width: 420px;
+      margin: 80px auto;
+      padding: 30px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 20px rgba(5, 3, 3, 0.08);
+    }
+    .btn-primary {
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $email = trim($_POST['email']);
-    $token = bin2hex(random_bytes(16));
+<div class="reset-container">
+  <h4 class="text-center mb-4">Reset Your Password</h4>
+  <form method="POST" action="resetPasswordRequestHandler.php">
+    <div class="mb-3">
+      <label for="email" class="form-label">Email Address</label>
+      <input type="email" class="form-control" id="email" name="email" placeholder="you@example.com" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Send Reset Link</button>
+  </form>
+  <p class="text-center mt-3 mb-0">
+      <a href="/projectUserLog/login.php" class="text-decoration-none">← Back to Login</a>
+  </p>
+</div>
 
-    $stmt = $conn->prepare("UPDATE users SET reset_token = :token WHERE email = :email");
-    $stmt->execute([':token' => $token, ':email' => $email]);
-
-    $resetLink = "http://localhost/projectUserLog/reset_password.php?token=$token";
-    $subject = "Reset Your Password";
-    $message = "Click here to reset your password: $resetLink";
-    sendEmail($email, $subject, $message);
-
-    echo "Password reset link sent if email exists.";
-}
-?>
-
-<form method="POST">
-    <input type="email" name="email" placeholder="Enter your email" required><br>
-    <button type="submit">Send Reset Link</button>
-</form>
+</body>
+</html>
