@@ -19,3 +19,21 @@ A secure user authentication system built with **PHP** and **MySQL**, following 
 - ✅ Full PHPMailer Email Integration (via Gmail SMTP)
 
 ---
+## 🔧 Technologies Used
+
+- **PHP 8+**  
+- **MySQL**  
+- **PHPMailer**  
+- **Bootstrap 5**  
+- **Git / GitHub**  
+- **HTML + CSS**  
+- **VSCode / XAMPP**
+
+---
+
+## 🧪 How to Set Up Locally
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/yourusername/projectUserLog.git
