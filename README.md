@@ -19,15 +19,15 @@ A secure user authentication system built with **PHP** and **MySQL**, following 
 - ✅ Full PHPMailer Email Integration (via Gmail SMTP)
 
 ---
+
 ## 🔧 Technologies Used
 
-- **PHP 8+**  
+- **PHP 8+**
+- **SQL**
 - **MySQL**  
 - **PHPMailer**  
 - **Bootstrap 5**  
-- **Git / GitHub**  
 - **HTML + CSS**  
-- **VSCode / XAMPP**
 
 ---
 
@@ -36,4 +36,47 @@ A secure user authentication system built with **PHP** and **MySQL**, following 
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/projectUserLog.git
+git clone https://github.com/sopiriye/projectUserLog.git
+```
+### 2. Start Your Local Server
+You can use XAMPP, Laragon, or the native PHP server.
+
+### 3. Create a MySQL Database
+Create a DB called projectUserLog and import the SQL schema (projectUserLog.sql) or generate it manually.
+
+### 4. Configure DB Credentials
+Update the file at config/config.php with your DB credentials:
+
+### 5. Setup PHPMailer
+- PHPMailer is already included in the repo.
+- Generate a Gmail App Password for your account.
+- Replace your email and app password in mailer.php
+
+---
+
+## Email Features
+
+| Feature              | Description                                     |
+|----------------------|-------------------------------------------------|
+| Email Verification   | Users must verify their email before login     |
+| Password Reset       | Tokenized secure reset links sent via email    |
+| PHPMailer Integration| Used for sending all transactional emails      |
+
+---
+
+## 🧠 How Everything Connects
+- Users register → receive a verification email via PHPMailer
+- After verification → they can log in and upload documents
+- Admins (added manually in DB) → can view/download uploads
+- Session timeout after 15 minutes of inactivity
+- Password reset available for all verified users
+
+---
+
+## 🛡️ Security Features
+- password_hash() & password_verify() for secure password storage
+- Token-based email verification and password resets
+- Role-based access with clear Admin/User dashboard segregation
+- Sessions protected against hijacking and misuse
+
+
