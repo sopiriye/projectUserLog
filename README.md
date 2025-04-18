@@ -15,7 +15,6 @@ A secure user authentication system built with **PHP** and **MySQL**, following 
 - ✅ Password Reset via Email Link (PHPMailer)
 - ✅ User Session Timeout for Inactivity
 - ✅ Real-time Feedback via Alerts
-- ✅ Clean UI Layout with Bootstrap
 - ✅ Full PHPMailer Email Integration (via Gmail SMTP)
 
 ---
@@ -39,7 +38,7 @@ A secure user authentication system built with **PHP** and **MySQL**, following 
 git clone https://github.com/sopiriye/projectUserLog.git
 ```
 ### 2. Start Your Local Server
-You can use XAMPP, Laragon, or the native PHP server.
+You can use the native PHP server.
 
 ### 3. Create a MySQL Database
 Create a DB called projectUserLog and import the SQL schema (projectUserLog.sql) or generate it manually.
