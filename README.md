@@ -4,22 +4,22 @@ A secure user authentication system built with **PHP** and **MySQL**, following 
 
 ---
 
-## 🚀 Features
+## Features
 
-- ✅ User Registration with Email Verification
-- ✅ Secure Login with Session Management
-- ✅ Role-based Access Control (User & Admin)
-- ✅ Admin Panel to View & Download Uploaded Files
-- ✅ File Upload Functionality (PDF, DOC, TXT)
-- ✅ Password Hashing using `password_hash()`
-- ✅ Password Reset via Email Link (PHPMailer)
-- ✅ User Session Timeout for Inactivity
-- ✅ Real-time Feedback via Alerts
-- ✅ Full PHPMailer Email Integration (via Gmail SMTP)
+- User Registration with Email Verification
+- Secure Login with Session Management
+- Role-based Access Control (User & Admin)
+- Admin Panel to View & Download Uploaded Files
+- File Upload Functionality (PDF, DOC, TXT)
+- Password Hashing using `password_hash()`
+- Password Reset via Email Link (PHPMailer)
+- User Session Timeout for Inactivity
+- Real-time Feedback via Alerts
+- Full PHPMailer Email Integration (via Gmail SMTP)
 
 ---
 
-## 🔧 Technologies Used
+## Technologies Used
 
 - **PHP 8+**
 - **SQL**
@@ -30,7 +30,7 @@ A secure user authentication system built with **PHP** and **MySQL**, following 
 
 ---
 
-## 🧪 How to Set Up Locally
+## How to Set Up Locally
 
 ### 1. Clone the Repository
 
@@ -63,7 +63,7 @@ Update the file at config/config.php with your DB credentials:
 
 ---
 
-## 🧠 How Everything Connects
+## How Everything Connects
 - Users register → receive a verification email via PHPMailer
 - After verification → they can log in and upload documents
 - Admins (added manually in DB) → can view/download uploads
@@ -72,7 +72,7 @@ Update the file at config/config.php with your DB credentials:
 
 ---
 
-## 🛡️ Security Features
+## Security Features
 - password_hash() & password_verify() for secure password storage
 - Token-based email verification and password resets
 - Role-based access with clear Admin/User dashboard segregation
