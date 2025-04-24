@@ -2,6 +2,7 @@
 // register_handler.php - Register handler logic
 require 'config/config.php';
 require 'config/mailer.php';
+require 'config/db_connect.php';
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $username = trim($_POST["username"] ?? "");
@@ -52,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     
     $template = file_get_contents(__DIR__ . '/includes/emailVerificationTemplate.html');
 
-    $verifyLink = "http://localhost:4000/projectUserLog/templates/verifyEmail.php?token=$verification_token";
+    $verifyLink = getenv('APP_URL').getenv('APP_NAME')."/templates/verifyEmail.php?token=$verification_token";
     $subject = "Verify your email";
 
     $message = str_replace('https://yourdomain.com/', $verifyLink, $template);

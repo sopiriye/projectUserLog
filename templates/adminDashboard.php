@@ -1,7 +1,7 @@
 <?php
 // admin_dashboard.php - Dashboard for admin users
 session_start();
-require_once 'config/config.php';
+require_once 'config/db_connect.php';
 
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
     exit("Access denied.");

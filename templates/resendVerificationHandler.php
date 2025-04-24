@@ -2,6 +2,7 @@
 // resend_verification.php
 require 'config/config.php';
 require 'config/mailer.php';
+require 'config/db_connect.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = trim($_POST['email']);
@@ -11,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if ($user && !$user['is_verified']) {
-        $verifyLink = "http://localhost/projectUserLog/verify_email.php?token=" . $user['verification_token'];
+        $verifyLink = getenv('APP_URL').getenv('APP_NAME')."/verify_email.php?token=" . $user['verification_token'];
         $subject = "Resend Email Verification";
         $message = "Click the link to verify your email: $verifyLink";
         sendEmail($email, $subject, $message);

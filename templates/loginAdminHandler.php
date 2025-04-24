@@ -1,6 +1,6 @@
 <?php
 // login_handler.php - Login handler logic
-require_once 'config/config.php';
+require_once 'config/db_connect.php';
 session_start();
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {

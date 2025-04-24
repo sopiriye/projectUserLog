@@ -7,6 +7,7 @@ use PHPMailer\PHPMailer\Exception;
 require_once __DIR__ . '/../../vendor/phpMailer/phpMailer/src/Exception.php';
 require_once __DIR__ . '/../../vendor/phpMailer/phpMailer/src/PHPMailer.php';
 require_once __DIR__ . '/../../vendor/phpMailer/phpMailer/src/SMTP.php';
+require_once __DIR__ . '/config.php'; // Load .env variables
 // require_once __DIR__ . '/../PHPMailer/src/SMTP.php';
 
 // alternative for move up a directory folder
@@ -16,17 +17,17 @@ function sendEmail($to, $subject, $body) {
     $mail = new PHPMailer(true);
 
     try {
-        // SMTP server configuration
+        // SMTP configuration (from .env)
         $mail->isSMTP();
-        $mail->Host       = 'smtp.gmail.com';  // Use your SMTP server
+        $mail->Host       = getenv('MAIL_HOST');  // Use your SMTP server
         $mail->SMTPAuth   = true;
-        $mail->Username   = 'sopiriyerobinson2003@gmail.com';  // Replace with your email
-        $mail->Password   = 'rswnrgexfywmnpuw';     // Replace with your app password
-        $mail->SMTPSecure = 'ssl';
-        $mail->Port       = 465;
+        $mail->Username   = getenv('MAIL_USERNAME');  // Replace with your email
+        $mail->Password   = getenv('MAIL_PASSWORD');     // Replace with your app password
+        $mail->SMTPSecure = getenv('MAIL_ENCRYPTION');
+        $mail->Port       = getenv('MAIL_PORT');
 
         // Email headers
-        $mail->setFrom('sopiriyerobinson2003@gmail.com', 'projectUserLog');
+        $mail->setFrom(getenv('MAIL_FROM_ADDRESS'), getenv('MAIL_FROM_NAME'));
         $mail->addAddress($to);
         $mail->isHTML(true);
 
@@ -36,8 +37,8 @@ function sendEmail($to, $subject, $body) {
         $mail->send();
         return true;
     } catch (Exception $e) {
-        echo "Mailer Error: " . $mail->ErrorInfo;
-        // error_log("Mailer Error: " . $mail->ErrorInfo);
+        // echo "Mailer Error: " . $mail->ErrorInfo;
+        error_log("Mailer Error: " . $mail->ErrorInfo);
         return false;
     }
 }

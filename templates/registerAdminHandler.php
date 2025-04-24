@@ -1,6 +1,6 @@
 <?php
 //  Register Admin handler logic
-require 'config/config.php';
+require 'config/db_connect.php';
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $username = trim($_POST["username"] ?? "");

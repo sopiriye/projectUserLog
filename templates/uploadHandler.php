@@ -1,7 +1,7 @@
 <?php
 // upload_handler.php - File upload logic
 session_start();
-require_once 'config/config.php';
+require_once 'config/db_connect.php';
 
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'user') {
     exit("Access denied.");

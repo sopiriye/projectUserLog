@@ -14,7 +14,7 @@ services:
       - key: DB_PORT
         value: 3306
       - key: DB_NAME
-        value: projectuserlog_db
+        value: projectuserlog
       - key: DB_USER
         value: your-db-username
       - key: DB_PASSWORD

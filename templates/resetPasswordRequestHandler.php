@@ -1,7 +1,8 @@
 <?php
 // reset_password_request.php
-require 'config/config.php';
+require 'config/db_connect.php';
 require 'config/mailer.php';
+require 'config/config.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = trim($_POST['email']);
@@ -28,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
     $template = file_get_contents(__DIR__ . '/includes/emailVerificationTemplate.html');
-    $resetLink = "http://localhost:4000/projectUserLog/templates/resetPassword.php?token=$verification_token";
+    $resetLink = getenv('APP_URL').getenv('APP_NAME')."/templates/resetPassword.php?token=$verification_token";
     $subject = "Reset Your Password";
 
 

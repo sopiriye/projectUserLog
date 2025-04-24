@@ -20,6 +20,8 @@
   </form>
 
   <a href="templates/resendVerification.php">Resend Verification Email</a> | <a href="templates/resetPasswordRequest.php">Forgot Password?</a>
+  <p>Already have an account?! </p>
+  <a href="login.php">Login</a>
 </div>
 
 <?php include 'templates/includes/footer.php'; ?>

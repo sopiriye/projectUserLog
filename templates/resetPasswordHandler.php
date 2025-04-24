@@ -1,6 +1,6 @@
 <?php
 // reset_password.php
-require 'config/config.php';
+require 'config/db_connect.php';
 
 $token = $_GET['token'] ?? '';
 

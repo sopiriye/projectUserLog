@@ -1,6 +1,6 @@
 <?php
 
-require_once 'config/config.php';
+require_once 'config/db_connect.php';
 
 $token = $_GET['token'] ?? '';
 
