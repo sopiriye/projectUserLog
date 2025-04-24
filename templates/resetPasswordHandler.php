@@ -30,5 +30,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->execute([':pass' => $hashed, ':token' => $token]);
 
     echo "Password reset successful.";
+
 }
 ?>
+
+<p>Already have an account?! </p>
+<a href="login.php">Login</a>
