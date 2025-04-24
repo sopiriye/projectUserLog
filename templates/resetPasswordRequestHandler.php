@@ -2,7 +2,7 @@
 // reset_password_request.php
 require 'config/db_connect.php';
 require 'config/mailer.php';
-require 'config/config.php';
+require_once 'config/config.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = trim($_POST['email']);
