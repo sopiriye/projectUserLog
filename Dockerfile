@@ -1,5 +1,5 @@
 # Use official PHP image with Apache support
-FROM php:8.1-apache
+FROM php:8.2-apache
 
 # Install required PHP extensions (e.g., for MySQL, email, etc.)
 RUN docker-php-ext-install pdo pdo_mysql
@@ -17,4 +17,4 @@ COPY . /var/www/html/
 RUN chown -R www-data:www-data /var/www/html
 
 # Expose Apache port
-EXPOSE 80
+EXPOSE 10000
