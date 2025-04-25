@@ -3,6 +3,11 @@
 function loadEnv($path = __DIR__) {
     $envFile = $path . '/.env';
     if (!file_exists($envFile)) {
+
+        if (getenv('DB_HOST') !== false) {  
+            return; // Render's env vars are already set  
+        }  
+
         throw new Exception('.env file not found!');
     }
 
