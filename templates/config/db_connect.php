@@ -11,7 +11,7 @@ $password = getenv('DB_PASSWORD');
 
 // Use PDO for secure and flexible database access
 try {
-    $conn = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
+    $conn = new PDO("mysql:host=$host;port=3306;dbname=$dbname;charset=utf8", $username, $password);
     
     // Set error mode to throw exceptions (useful for debugging)
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

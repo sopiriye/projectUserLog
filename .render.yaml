@@ -16,6 +16,8 @@ services:
   # MySQL container
   mysql:
     image: mysql:8.0 # Official MySQL image
+    ports:
+      - "3306:3306" # Explicitly expose MySQL port
     environment:
       MYSQL_ROOT_PASSWORD: "${DB_PASSWORD}"
       MYSQL_DATABASE: "${DB_NAME}"
